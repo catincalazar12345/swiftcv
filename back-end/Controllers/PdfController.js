@@ -13,7 +13,7 @@ async function sunLaRobotel(prompt) {
 const controller = {
     processInformation: async (req, res) => {
       try
-      {  const {first_name,last_name,university,
+      {  const {first_name,last_name, phone_number,email,university,grad_date,major,
             language,frameworks,work_experience,
             projects,social_links} = req.body;
         
@@ -29,7 +29,9 @@ const controller = {
         // }
     
         //work in progress
-        const prompt = `Header: Name and contact info: ${first_name}, ${last_name}, ${social_links}
+        const prompt = `Generate a minimalist HTML and CSS inline CV tailored for computer science students based on the following JSON data. The CV should adhere to standard CV conventions for the computer science field, emphasizing skills, projects, and relevant experience that recruiters typically seek. Rephrase the descriptions provided for 'work_experience' and 'projects' to be concise and impactful. Omit entire sections (e.g., Education, Work Experience, Projects, etc.) if the corresponding field in the JSON data is set to 'null_input' or is entirely missing. Do not include placeholders or requests for additional information. Focus solely on presenting the provided data in a professional, easily readable, and minimalist format.  Include a loading indicator while the CV is being generated. Do not add mock data like "youexample@gmail.com".The cv will be ready to be printed out so exclusively use the data given by the user. Completely omit sections or data for which input has not been given. Following are the information and some directions : 
+        
+                      Header: Name and contact info: ${first_name}, ${last_name}, ${social_links}, ${phone_number}, ${email}
 
                         Alignment: Center
 
@@ -39,7 +41,7 @@ const controller = {
 
                         Alignment: Left
 
-                        Content: Use an <h2> for the title "Education". Include placeholders for University, Major, and Graduation Date.
+                        Content: Use an <h2> for the title "Education". Include placeholders for University, Major,${major}, and Graduation Date, ${grad_date}.
 
                         Section: Languages: ${language}
 

@@ -12,6 +12,9 @@ app.get('/', (req, res) => {
     res.send("bagamias pulan maivuta ta sclavule");
 });
 
-app.listen(5000, () => {
-    console.log("Serverul ruleaza pe http://localhost:5000");
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Serverul ruleaza pe http://localhost:${PORT}`);
+}).on('error', (err) => {
+    console.error('Server error:', err);
 });
