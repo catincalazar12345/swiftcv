@@ -1,8 +1,12 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express');
+const bodyParser = require('body-parser');
+const router = require('./Routes/index.js');
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
+// app.use(bodyParser.json());
+
+app.use("/api",router);
 
 app.get('/', (req, res) => {
     res.send("bagamias pulan maivuta ta sclavule");

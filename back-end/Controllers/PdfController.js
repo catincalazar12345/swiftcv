@@ -1,5 +1,5 @@
-import 'dotenv/config';
-import { GoogleGenerativeAI } from "@google/generative-ai";
+require('dotenv/config');
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const ai = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 
@@ -72,3 +72,5 @@ const controller = {
       }
     },
 };
+
+module.exports = controller;

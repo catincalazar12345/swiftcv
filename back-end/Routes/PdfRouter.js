@@ -3,3 +3,5 @@ const router = express.Router();
 const {PdfController} = require('../Controllers/index');
 
 router.post('/send', PdfController.processInformation);
+
+module.exports = router;
