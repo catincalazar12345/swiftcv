@@ -12,7 +12,8 @@ async function sunLaRobotel(prompt) {
 
 const controller = {
     processInformation: async (req, res) => {
-        const {first_name,last_name,university,
+      try
+      {  const {first_name,last_name,university,
             language,frameworks,work_experience,
             projects,social_links} = req.body;
         
@@ -28,46 +29,46 @@ const controller = {
         // }
     
         //work in progress
-        const prompt = `Header: Name and Contact Info
+        const prompt = `Header: Name and contact info: ${first_name}, ${last_name}, ${social_links}
 
                         Alignment: Center
 
                         Content: Use an <h1> for the full name. Include placeholders for Email and Phone Number.
 
-                        Section: Education
+                        Section: Education: ${university}
 
                         Alignment: Left
 
                         Content: Use an <h2> for the title "Education". Include placeholders for University, Major, and Graduation Date.
 
-                        Section: Languages
+                        Section: Languages: ${language}
 
                         Alignment: Left
 
                         Content: Use an <h2> for the title "Languages". Add a list for programming or spoken languages.
 
-                        Section: Frameworks
+                        Section: Frameworks: ${frameworks}
 
                         Alignment: Left
 
                         Content: Use an <h2> for the title "Frameworks". Add a list for technical frameworks or libraries.
 
-                        Section: Work Experience
+                        Section: Work Experience : ${work_experience}
 
                         Alignment: Left
 
                         Content: Use an <h2> for the title "Work Experience". Add a descriptive paragraph for professional experience.
 
-                        Section: Projects
+                        Section: Projects ${projects}
 
                         Alignment: Left
 
-                        Content: Use an <h2> for the title "Projects". Add a descriptive paragraph for projects.
-
-                        Section: Links
-
-                        Alignment: Left
-
-                        Content: Use an <h2> for the title "Links". Add a list of hyperlinks for social media or portfolios."`;
+                        Content: Use an <h2> for the title "Projects". Add a descriptive paragraph for projects.`;
+        const result = await sunLaRobotel(prompt);
+        return res.status(200).send(result);
+      }catch(err){
+        console.log(err);
+        return res.status(404).send("Error");
+      }
     },
 };
