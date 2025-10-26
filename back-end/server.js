@@ -10,4 +10,4 @@ app.get('/', (req, res) => {
 
 app.listen(5000, () => {
     console.log("Serverul ruleaza pe http://localhost:5000");
-})
+});
