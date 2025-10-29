@@ -1,4 +1,4 @@
-import { Button, Checkbox, Group, TextInput, Textarea } from '@mantine/core';
+import { Button, Checkbox, Group, TextInput, Textarea, Grid } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 const isValid = (value)=> {
@@ -40,7 +40,10 @@ export default function Form() {
 
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
-      <TextInput
+
+        <Grid>
+        <Grid.Col span={6}>
+            <TextInput
         withAsterisk
         label="First Name"
         placeholder="ex: Catinca"
@@ -48,6 +51,19 @@ export default function Form() {
         {...form.getInputProps('firstname')}
       />
 
+    <TextInput
+        withAsterisk
+        label="Phone Number (RO)"
+        placeholder="07xxxxxxxx"
+        key={form.key('phone')}
+        {...form.getInputProps('phone')}
+      />
+
+      
+      </Grid.Col>
+            
+       <Grid.Col span={6}> 
+    
       <TextInput
         withAsterisk
         label="Last Name"
@@ -55,7 +71,6 @@ export default function Form() {
         key={form.key('lastname')}
         {...form.getInputProps('lastname')}
       />
-
       <TextInput
         withAsterisk
         label="Email"
@@ -64,14 +79,10 @@ export default function Form() {
         {...form.getInputProps('email')}
       />
 
-      <TextInput
-        withAsterisk
-        label="Phone Number (RO)"
-        placeholder="07xxxxxxxx"
-        key={form.key('phone')}
-        {...form.getInputProps('phone')}
-      />
-
+    
+      </Grid.Col>
+    
+      </Grid>
       <Textarea 
       withAsterisk
       label="Social media links (LinkedIn, GitHub, etc)"
@@ -84,6 +95,7 @@ export default function Form() {
       <Group justify="flex-end" mt="md">
         <Button type="submit">Submit</Button>
       </Group>
+
     </form>
   );
 }
