@@ -1,5 +1,20 @@
-import { Button, Checkbox, Group, TextInput, Textarea, Grid } from '@mantine/core';
-import { useForm } from '@mantine/form';
+import {
+  Button,
+  Box,
+  MultiSelect,
+  Group,
+  TextInput,
+  Textarea,
+  Paper,
+  Grid,
+  Select,
+  Flex,
+} from "@mantine/core";
+import { useForm } from "@mantine/form";
+import { useViewportSize } from "@mantine/hooks";
+import { DatePickerInput } from "@mantine/dates";
+import React from "react";
+import "./Form.css";
 
 const isValid = (value) => {
     let linkArr = value.split(",");
@@ -99,4 +114,3 @@ export default function Form() {
         </form>
     );
 }
-
